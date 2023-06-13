@@ -1,0 +1,12 @@
+.friends__item {
+    text-align: center;
+}
+.friends__item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+}
+.friends__item a {
+    color: #98989b;
+    text-decoration: none;
+}
