@@ -1,29 +1,15 @@
 import {createStore, combineReducers} from 'redux';
 import profileReducer from './profileReducer';
 import dialogsReducer from './dialogsReducer';
+import usersReducer from './usersReducer';
 
 let reducers = combineReducers({
-  postsPage: profileReducer,
-  dialogsPage: dialogsReducer
+    postsPage: profileReducer,
+    dialogsPage: dialogsReducer,
+    usersPage: usersReducer
 });
 
 let store = createStore(reducers);
+window.store = store;
 
-let callbackFunc;
-
-const storeApi = {
-  getState: store.getState,
-  dispatch: store.dispatch,
-  subscribe: store.subscribe,
-  callbackFunc: (callback) => {
-    callbackFunc = callback;
-  }
-};
-
-store.subscribe(() => {
-  if (callbackFunc) {
-    callbackFunc(store.getState());
-  }
-});
-
-export default storeApi;
+export default store;

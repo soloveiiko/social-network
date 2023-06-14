@@ -1,6 +1,6 @@
 import React from 'react';
-import DialogItem from './DialogItem';
-import MessageItem from './MessageItem';
+import DialogItem from './DialogItem/DialogItem';
+import MessageItem from './MessageItem/MessageItem';
 import './style.css';
 
 const Dialogs = (props) => {

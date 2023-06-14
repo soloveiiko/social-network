@@ -1,8 +1,8 @@
- import firstUser from './../images/1.png';
-import secondUser from './../images/2.png';
-import thirdUser from './../images/3.jpeg';
 import dialogsReducer from './dialogsReducer'
 import profileReducer from './profileReducer'
+import firstUser from './../images/1.png';
+import secondUser from './../images/2.png';
+import thirdUser from './../images/3.jpeg';
 
 let store = {
     _state: {
