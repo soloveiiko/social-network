@@ -1,14 +1,14 @@
 import React from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import Header from './Components/Header/Header';
-import Navbar from './Components/Navbar/Navbar';
-import Profile from './Components/Profile/Profile';
-import News from './Components/News/News';
-import Music from './Components/Music/Music';
-import Settings from './Components/Settings/Settings';
-import Footer from './Components/Footer/Footer';
-import DialogsContainer from './Components/Dialogs/DialogsContainer';
-import UsersContainer from './Components/Users/UsersContainer';
+import Header from './components/Header/Header';
+import Navbar from './components/Navbar/Navbar';
+import Profile from './components/Profile/Profile';
+import News from './components/News/News';
+import Music from './components/Music/Music';
+import Settings from './components/Settings/Settings';
+import Footer from './components/Footer/Footer';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
+import Users from './components/Users/Users';
 import './App.css';
 
 function App(props) {
@@ -21,7 +21,7 @@ function App(props) {
                     <Routes>
                         <Route path='/profile' element={<Profile/>}/>
                         <Route path='/dialogs' element={<DialogsContainer/>}/>
-                        <Route path='/users' element={<UsersContainer/>}/>
+                        <Route path='/users' element={<Users/>}/>
                         <Route path='/news' element={<News/>}/>
                         <Route path='/music' element={<Music/>}/>
                         <Route path='/settings' element={<Settings/>}/>
