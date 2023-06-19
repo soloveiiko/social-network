@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Paginate from '../Paginate/Paginate';
+import Pagination from '../Pagination/Pagination';
 import UserItem from './User/UserItem';
 import './style.css';
 
 const Users = () => {
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalUsersCount, setTotalUsersCount] = useState(30);
+  const [totalUsersCount, setTotalUsersCount] = useState(100);
   const [pageSize] = useState(5);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ const Users = () => {
     <div className='users-container'>
       <UserItem users={users} follow={follow} unfollow={unfollow} />
 
-      <Paginate
+      <Pagination
         totalUsersCount={totalUsersCount}
         pageSize={pageSize}
         currentPage={currentPage}

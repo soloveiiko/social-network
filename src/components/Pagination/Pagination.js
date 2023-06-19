@@ -1,8 +1,8 @@
 import React from 'react';
 import './style.css';
-import {usePagination, DOTS} from "./UsePagination";
+import {usePagination, DOTS} from './UsePagination';
 
-const Paginate = ({
+const Pagination = ({
                     totalUsersCount,
                     pageSize,
                     currentPage,
@@ -49,4 +49,4 @@ const Paginate = ({
 
   )
 }
-export default Paginate;
+export default Pagination;
