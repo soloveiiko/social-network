@@ -3,7 +3,7 @@ import secondUser from "../assets/images/2.png";
 import thirdUser from "../assets/images/3.jpeg";
 
 const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_MESSAGE_TEXT = 'UPDATE-MESSAGE-TEXT';
+const UPDATE_MESSAGE_VALUE = 'UPDATE-MESSAGE-TEXT';
 
 let initialState = {
     dialogs: [
@@ -26,7 +26,7 @@ let initialState = {
 
 const dialogs = (state = initialState, action) => {
     switch (action.type) {
-        case UPDATE_MESSAGE_TEXT:
+        case UPDATE_MESSAGE_VALUE:
             return {
                 ...state,
                 messageValue: action.newText
@@ -44,6 +44,6 @@ const dialogs = (state = initialState, action) => {
 }
 
 export const addMessageActionCreator = () => ({type: ADD_MESSAGE})
-export const updateMessageActionCreator = (text) => ({type: UPDATE_MESSAGE_TEXT, newText: text})
+export const updateMessageActionCreator = (text) => ({type: UPDATE_MESSAGE_VALUE, newText: text})
 
 export default dialogs;

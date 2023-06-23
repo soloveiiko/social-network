@@ -9,7 +9,7 @@ let initialState = {
     postValue: '',
 }
 
-const profile = (state = initialState, action) => {
+const posts = (state = initialState, action) => {
     switch (action.type) {
         case UPDATE_POST_TEXT:
             return {
@@ -32,4 +32,4 @@ const profile = (state = initialState, action) => {
 export const addPostActionCreator = () => ({type: ADD_POST})
 export const updatePostActionCreator = (text) => ({type: UPDATE_POST_TEXT, newText: text})
 
-export default profile;
+export default posts;

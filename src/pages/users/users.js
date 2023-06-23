@@ -1,25 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Pagination from '../../components/pagination/pagination';
+import {useSelector, useDispatch} from 'react-redux';
+import {setIsFetching} from '../../redux/users';
 import User from '../../components/users/user/user';
+import Pagination from '../../components/pagination/pagination';
+import Preloader from '../../components/preloader/preloader';
 import '../../components/users/style.css';
-import Preloader from "../../components/preloader/preloader";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalUsersCount, setTotalUsersCount] = useState(100);
-  const [pageSize] = useState(1);
-  const [isFetching, setIsFetching] = useState(true);
+  const [pageSize] = useState(5);
+  // const [isFetching, setIsFetching] = useState(true);
 
+
+  const usersPage = useSelector(state => state.users);
+  const dispatch = useDispatch();
   useEffect(() => {
     const fetchUsers = async () => {
-      setIsFetching(true);
+      dispatch(setIsFetching(true))
       try {
         const response = await axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`);
         setUsers(response.data.items);
         setTotalUsersCount(response.data.totalCount);
-        setIsFetching(false);
+        dispatch(setIsFetching(false))
       } catch (error) {
         console.log(error);
       }
@@ -28,13 +33,13 @@ const Users = () => {
     fetchUsers();
   }, [currentPage, pageSize]);
 
-  const follow = (userId) => {
+  const onClickFollow = (userId) => {
     setUsers(prevUsers =>
       prevUsers.map(u => (u.id === userId ? { ...u, followed: false } : u))
     );
   };
 
-  const unfollow = (userId) => {
+  const onClickUnfollow = (userId) => {
     setUsers(prevUsers =>
       prevUsers.map(u => (u.id === userId ? { ...u, followed: true } : u))
     );
@@ -49,9 +54,9 @@ const Users = () => {
 
   return (
     <>
-      {isFetching ? <Preloader/> : null}
+      {usersPage.isFetching ? <Preloader/> : null}
     <div className='users-container'>
-      <User users={users} follow={follow} unfollow={unfollow} />
+      <User users={users} follow={onClickFollow} unfollow={onClickUnfollow} />
       <Pagination
         totalUsersCount={totalUsersCount}
         pageSize={pageSize}

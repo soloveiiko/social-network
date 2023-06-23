@@ -1,4 +1,4 @@
-import profile, {addPostActionCreator, updatePostActionCreator} from '../../../redux/profile'
+import posts, {addPostActionCreator, updatePostActionCreator} from '../../redux/posts/posts'
 import Posts from './posts';
 import {connect} from 'react-redux';
 

@@ -4,7 +4,11 @@ import Users from '../../pages/users/users';
 
 const mapStateToProps = (state) => {
     return {
-        users: state.usersPage.users
+        users: state.users.users,
+        currentPage: state.users.currentPage,
+        totalUsersCount: state.users.totalUsersCount,
+        pageSize: state.users.pageSize,
+        isFetching: state.users.isFetching
     }
 }
 const mapDispatchToProps = (dispatch) => {
