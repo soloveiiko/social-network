@@ -1,8 +1,8 @@
-import dialogsReducer from './dialogsReducer'
-import profileReducer from './profileReducer'
-import firstUser from './../images/1.png';
-import secondUser from './../images/2.png';
-import thirdUser from './../images/3.jpeg';
+import dialogs from './dialogs'
+import profile from './profile'
+import firstUser from '../assets/images/1.png';
+import secondUser from '../assets/images/2.png';
+import thirdUser from '../assets/images/3.jpeg';
 
 let store = {
     _state: {
@@ -34,7 +34,7 @@ let store = {
     },
 
     _rerenderEntireTree() {
-        console.log('Post added')
+        console.log('post added')
     },
 
     getState() {
@@ -46,8 +46,8 @@ let store = {
     },
 
     dispatch(action) {
-        this._state.postsPage = profileReducer(this._state.postsPage, action);
-        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.postsPage = profile(this._state.postsPage, action);
+        this._state.dialogsPage = dialogs(this._state.dialogsPage, action);
         this._rerenderEntireTree(this._state);
     }
 }

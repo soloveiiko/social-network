@@ -1,14 +1,14 @@
 import React from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import Header from './components/Header/Header';
-import Navbar from './components/Navbar/Navbar';
-import Profile from './components/Profile/Profile';
-import News from './components/News/News';
-import Music from './components/Music/Music';
-import Settings from './components/Settings/Settings';
-import Footer from './components/Footer/Footer';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
-import Users from './components/Users/Users';
+import Header from './components/header/header';
+import Navbar from './components/navbar/navbar';
+import Profile from './pages/profile/profile';
+import News from './components/news/news';
+import Music from './components/music/music';
+import Settings from './components/settings/settings';
+import Footer from './components/footer/footer';
+import DialogsContainer from './components/dialogs/dialogsContainer';
+import Users from './pages/users/users';
 import './App.css';
 
 function App(props) {
