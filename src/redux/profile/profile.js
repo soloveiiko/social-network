@@ -1,24 +1,25 @@
-import defaultAvatar from '../../assets/images/1.png'
-// const SET_USER = 'SET-USER';
+const SET_USER = 'SET_USER';
 
 const initialState = {
-    avatar: defaultAvatar,
-    name: 'Mariia',
-    city: 'Lutsk',
-    age: 20,
-    bio: ''
-  }
-const profile = (state = initialState, action) => {
+  profile: null,
+  userId : 1
+};
+
+const profileReducer = (state = initialState, action) => {
   switch (action.type) {
-    // case SET_USER:
-    //   return {
-    //     ...state,
-    //   }
+    case SET_USER:
+      return {
+        ...state,
+        profile: action.profile
+      };
     default:
-      return state
+      return state;
   }
-}
-// export const setUser = () => ({
-//   type: SET_USER,
-// });
-export default profile;
+};
+
+export const setUser = (profile) => ({
+  type: SET_USER,
+  profile
+});
+
+export default profileReducer;

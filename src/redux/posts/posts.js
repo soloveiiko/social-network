@@ -6,7 +6,7 @@ let initialState = {
         {id: 1, message: 'Hello my friend', likesCount: 30},
         {id: 2, message: 'Hello', likesCount: 3},
     ],
-    postValue: '',
+    postValue: 'Hello',
 }
 
 const posts = (state = initialState, action) => {
@@ -14,7 +14,7 @@ const posts = (state = initialState, action) => {
         case UPDATE_POST_TEXT:
             return {
                 ...state,
-                postValue: action.newText
+                postValue: action.newText,
             }
         case ADD_POST: {
             let newPost = state.postValue;
@@ -29,7 +29,7 @@ const posts = (state = initialState, action) => {
     }
 }
 
-export const addPostActionCreator = () => ({type: ADD_POST})
-export const updatePostActionCreator = (text) => ({type: UPDATE_POST_TEXT, newText: text})
+export const addPost = () => ({type: ADD_POST})
+export const updatePostText = (text) => ({type: UPDATE_POST_TEXT, newText: text})
 
 export default posts;

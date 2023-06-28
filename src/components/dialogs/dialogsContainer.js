@@ -1,4 +1,4 @@
-import {addMessageActionCreator, updateMessageActionCreator} from '../../redux/dialogs'
+import {addMessageActionCreator, updateMessageActionCreator} from '../../redux/dialogs/dialogs'
 import './style.css';
 import Dialogs from "../../pages/dialogs/dialogs";
 import {connect} from 'react-redux';

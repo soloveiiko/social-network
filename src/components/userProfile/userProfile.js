@@ -1,16 +1,19 @@
-import React from "react";
+import React from 'react';
+import Preloader from "../preloader/preloader";
+import userPhoto from "../../assets/images/1.png";
+import './style.css';
 
 const User = (props) => {
-
+  if (!props.profile) {
+    return <Preloader/>
+  }
   return (
     <div className='user_infornation'>
       <div className='img_container'>
-        <img src={props.src} alt='avatar' />
+        <img src={props.profile.photos.large !=null ? props.profile.photos.large : userPhoto} alt='User' />
       </div>
-      <div className='name'>{props.name}</div>
-      <div className='city'>{props.city}</div>
-      <div className='age'>{props.age}</div>
-      <div className='bio'>{props.bio}</div>
+      <div className='fullName'>{props.profile.fullName}</div>
+      <div className='aboutMe'>{props.profile.aboutMe}</div>
     </div>
   )
 }

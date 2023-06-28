@@ -1,4 +1,4 @@
-import dialogs from './dialogs'
+import dialogs from './dialogs/dialogs'
 import profile from './posts/posts'
 import firstUser from '../assets/images/1.png';
 import secondUser from '../assets/images/2.png';

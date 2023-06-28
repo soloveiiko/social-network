@@ -1,3 +1,13 @@
+.posts_list {
+    margin-top: 20px;
+}
+.posts_list .post_item{
+    display: flex;
+    align-items: center;
+}
 .posts_list .like {
     margin-left: 15px;
+}
+.posts_list img {
+    margin-right: 15px;
 }

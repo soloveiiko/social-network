@@ -1,15 +1,37 @@
 import React, {useEffect} from 'react';
 import volleyball from '../../assets/images/volleyball-banner.jpeg'
-import UserProfile from "../../components/userProfile/userProfile";
+import UserProfile from '../../components/userProfile/userProfile';
 import './style.css';
-import PostsContainer from "../../components/posts/postsContainer";
+import axios from 'axios';
 import {useSelector, useDispatch} from 'react-redux';
-
+import {setUser} from '../../redux/profile/profile';
+import Posts from "../../components/posts/posts";
+import {addPost, addPostActionCreator, updatePostActionCreator, updatePostText} from "../../redux/posts/posts";
 
 const Profile = () => {
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.profile);
+  const posts = useSelector(state => state.posts);
 
-  const user = useSelector(state => state.profile.name);
-  console.log(user);
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`);
+        dispatch(setUser(response.data));
+        console.log(response)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchUser();
+  }, []);
+
+  const addNewPost = () => {
+    dispatch(addPost());
+  }
+  const updateNewPostText = (text) => {
+    dispatch(updatePostText(text));
+  }
 
   return (
     <div className='technologies'>
@@ -17,9 +39,13 @@ const Profile = () => {
         <img src={volleyball} alt='nature' />
       </div>
       <div className='main_content'>
-        {/*<UserProfile src={user.avatar} name={user.name} city={user.city} age={user.age} bio={user.bio}/>*/}
-
-          <PostsContainer/>
+        <UserProfile
+          profile={user.profile}
+        />
+        <Posts posts={posts.posts}
+               postValue={posts.postValue}
+               addNewPost={addNewPost}
+               updateNewPostText={updateNewPostText}/>
 
       </div>
     </div>

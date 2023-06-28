@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {useSelector, useDispatch} from 'react-redux';
-import {setIsFetching} from '../../redux/users';
+import {setIsFetching} from '../../redux/users/users';
 import User from '../../components/users/user/user';
 import Pagination from '../../components/pagination/pagination';
 import Preloader from '../../components/preloader/preloader';

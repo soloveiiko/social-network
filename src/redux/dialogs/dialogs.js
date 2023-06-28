@@ -1,6 +1,6 @@
-import firstUser from "../assets/images/1.png";
-import secondUser from "../assets/images/2.png";
-import thirdUser from "../assets/images/3.jpeg";
+import firstUser from "../../assets/images/1.png";
+import secondUser from "../../assets/images/2.png";
+import thirdUser from "../../assets/images/3.jpeg";
 
 const ADD_MESSAGE = 'ADD-MESSAGE';
 const UPDATE_MESSAGE_VALUE = 'UPDATE-MESSAGE-TEXT';

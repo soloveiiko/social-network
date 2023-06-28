@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux'
-import {addMessageActionCreator, updateMessageActionCreator} from '../../redux/dialogs';
+import {addMessageActionCreator, updateMessageActionCreator} from '../../redux/dialogs/dialogs';
 import DialogItem from '../../components/dialogs/dialogItem/dialogItem';
 import MessageItem from '../../components/dialogs/messageItem/messageItem';
 import '../../components/dialogs/style.css';
