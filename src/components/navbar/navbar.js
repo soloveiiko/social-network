@@ -1,15 +1,23 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
+import { NavLink, useLocation } from 'react-router-dom';
 import './style.css';
 // import friends from "./friends";
 
-const Navbar = (props) => {
+const Navbar = () => {
+  const location = useLocation();
+
+  const isProfileActive = location.pathname.startsWith('/profile');
   return (
     <nav className='menu'>
       <ul className='menu__list'>
         <li className='menu__item'>
-          <NavLink to='/profile'
-                   className={(menuActiveLink) => menuActiveLink.isActive ? 'menuActiveLink' : ''}>Profile</NavLink>
+          <NavLink
+            to='/profile/:id'
+            isActive={isProfileActive}
+            className={isProfileActive ? 'menuActiveLink' : ''}
+          >
+            Profile
+          </NavLink>
         </li>
         <li className='menu__item'>
           <NavLink to='/dialogs'

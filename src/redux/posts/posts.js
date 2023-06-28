@@ -6,7 +6,7 @@ let initialState = {
         {id: 1, message: 'Hello my friend', likesCount: 30},
         {id: 2, message: 'Hello', likesCount: 3},
     ],
-    postValue: 'Hello',
+    postValue: '',
 }
 
 const posts = (state = initialState, action) => {

@@ -1,6 +1,6 @@
 import React from 'react';
-import Preloader from "../preloader/preloader";
-import userPhoto from "../../assets/images/1.png";
+import Preloader from "../../preloader/preloader";
+import userPhoto from "../../../assets/images/1.png";
 import './style.css';
 
 const User = (props) => {

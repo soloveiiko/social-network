@@ -16,3 +16,11 @@
 .header__title_h1 {
     color: #98989b;
 }
+.header .login-container {
+    margin: 0 0 0 auto;
+}
+.header .login {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
