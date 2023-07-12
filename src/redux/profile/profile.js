@@ -1,24 +1,24 @@
-const SET_USER = 'SET_USER';
+const SET_USER = 'SET_USER'
 
 const initialState = {
   profile: null,
-};
+}
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER:
       return {
         ...state,
-        profile: action.profile
-      };
+        profile: action.profile,
+      }
     default:
-      return state;
+      return state
   }
-};
+}
 
 export const setUser = (profile) => ({
   type: SET_USER,
-  profile
-});
+  profile,
+})
 
-export default profileReducer;
+export default profileReducer
