@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import axios from 'axios'
-import { NavLink } from 'react-router-dom'
-import ball from '../../assets/images/ball.png'
 import { useDispatch, useSelector } from 'react-redux'
-import { setUserData } from '../../redux/auth/auth'
+import { NavLink } from 'react-router-dom'
+import { setUserData } from '../../redux/auth'
+import { getAuth } from '../../api'
+import ball from '../../assets/images/ball.png'
 import styles from './style.module.css'
 
 const Header = () => {
@@ -13,12 +13,7 @@ const Header = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const responce = await axios.get(
-          `https://social-network.samuraijs.com/api/1.0/auth/me`,
-          {
-            withCredentials: true,
-          }
-        )
+        const responce = await getAuth()
 
         if (responce.data.resultCode === 0) {
           let { id, login, email } = responce.data.data

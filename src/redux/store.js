@@ -1,9 +1,9 @@
 import { createStore, combineReducers } from 'redux'
-import profile from './profile/profile'
-import dialogs from './dialogs/dialogs'
-import users from './users/users'
-import posts from './posts/posts'
-import auth from './auth/auth'
+import profile from './profile'
+import dialogs from './dialogs'
+import users from './users'
+import posts from './posts'
+import auth from './auth'
 
 const reducers = combineReducers({
   profile,

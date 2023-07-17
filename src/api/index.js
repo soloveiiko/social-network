@@ -1,9 +1,23 @@
-import axios from 'axios';
+import axios from 'axios'
 
-export const axiosBase = axios.create({
-  baseUrl: 'https://social-network.samuraijs.com'
+const instance = axios.create({
+  withCredentials: true,
+  baseURL: 'https://social-network.samuraijs.com/api/1.0/',
 })
-export const getUsersPage = async (currentPage = 1, pageSize = 1) => {
-  const response = await axiosBase.get(`/api/1.0/users?page=${currentPage}&count=${pageSize}`);
-  return response.data.items;
+export const getUsers = (currentPage = 1, pageSize = 10) => {
+  return instance
+    .get(`users?page=${currentPage}&count=${pageSize}`)
+    .then((response) => {
+      return response.data
+    })
+}
+export const getUser = (userId = 3) => {
+  return instance.get(`profile/${userId}`).then((response) => {
+    return response.data
+  })
+}
+export const getAuth = () => {
+  return instance.get('/auth/me').then((response) => {
+    return response.data
+  })
 }

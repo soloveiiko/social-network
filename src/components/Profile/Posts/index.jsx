@@ -1,12 +1,8 @@
 import React from 'react'
-import styles from './style.module.css'
 import Post from './Post'
+import styles from './style.module.css'
 
 const Posts = (props) => {
-  let postElements = props.posts.map((el) => (
-    <Post key={el.id} message={el.message} likes={el.likesCount} />
-  ))
-
   let onAddPost = () => {
     if (props.postValue) {
       props.addNewPost()
@@ -25,7 +21,9 @@ const Posts = (props) => {
         <textarea onChange={onPostChange} value={props.postValue}></textarea>
         <button onClick={onAddPost}>Send</button>
       </div>
-      {postElements}
+      {props.posts.map((el) => (
+        <Post key={el.id} message={el.message} likes={el.likesCount} />
+      ))}
     </div>
   )
 }

@@ -3,12 +3,12 @@ import { useSelector, useDispatch } from 'react-redux'
 import {
   addMessageActionCreator,
   updateMessageActionCreator,
-} from '../../redux/dialogs/dialogs'
+} from '../../redux/dialogs'
 import DialogItem from '../../components/Dialogs/DialogItem'
 import MessageItem from '../../components/Dialogs/MessageItem'
 import styles from './style.module.css'
 
-const Index = () => {
+const DialogsPage = () => {
   const dialogs = useSelector((state) => state.dialogs)
   const dispatch = useDispatch()
   const sendMessage = () => {
@@ -52,4 +52,4 @@ const Index = () => {
     </div>
   )
 }
-export default Index
+export default DialogsPage

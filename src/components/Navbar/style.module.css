@@ -18,6 +18,9 @@
     color: #98989b;
     text-decoration: none;
 }
+/*.item a.active {*/
+/*    color: #ab44ab;*/
+/*}*/
 .item a:hover {
     color: #812c81;
 }

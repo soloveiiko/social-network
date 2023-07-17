@@ -1,30 +1,27 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
-import { setIsFetching } from '../../redux/users/users'
+import { setIsFetching, setUsers } from '../../redux/users'
+import { getUsers } from '../../api'
 import User from '../../components/Users/User'
-import Index from '../../components/common/Pagination'
+import Pagination from '../../components/common/Pagination'
 import Preloader from '../../components/common/Preloader'
 import styles from './style.module.css'
 
-const Users = () => {
-  const [users, setUsers] = useState([])
+const UsersPage = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [totalUsersCount, setTotalUsersCount] = useState(100)
   const [pageSize] = useState(5)
-  // const [isFetching, setIsFetching] = useState(true);
 
   const usersPage = useSelector((state) => state.users)
   const dispatch = useDispatch()
+
   useEffect(() => {
     const fetchUsers = async () => {
       dispatch(setIsFetching(true))
       try {
-        const response = await axios.get(
-          `https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`
-        )
-        setUsers(response.data.items)
-        setTotalUsersCount(response.data.totalCount)
+        const response = await getUsers(currentPage, pageSize)
+        dispatch(setUsers(response.items))
+        setTotalUsersCount(response.totalCount)
         dispatch(setIsFetching(false))
       } catch (error) {
         console.log(error)
@@ -59,8 +56,12 @@ const Users = () => {
     <>
       {usersPage.isFetching ? <Preloader /> : null}
       <div className={styles.container}>
-        <User users={users} follow={onClickFollow} unfollow={onClickUnfollow} />
-        <Index
+        <User
+          users={usersPage.users}
+          follow={onClickFollow}
+          unfollow={onClickUnfollow}
+        />
+        <Pagination
           totalUsersCount={totalUsersCount}
           pageSize={pageSize}
           currentPage={currentPage}
@@ -73,4 +74,4 @@ const Users = () => {
   )
 }
 
-export default Users
+export default UsersPage

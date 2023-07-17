@@ -2,7 +2,7 @@ import React from 'react'
 import { usePagination, DOTS } from '../../../hooks/usePagination'
 import styles from './style.module.css'
 
-const Index = ({
+const Pagination = ({
   totalUsersCount,
   pageSize,
   currentPage,
@@ -59,4 +59,4 @@ const Index = ({
     </div>
   )
 }
-export default Index
+export default Pagination
