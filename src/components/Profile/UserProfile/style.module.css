@@ -4,7 +4,7 @@
     grid-template-columns: 1fr 10fr;
     font-size: 18px;
 }
-.user_infornation .img_container {
+.img_container {
     grid-column: 1/2;
     grid-row: 1/4;
     position: relative;
@@ -13,7 +13,7 @@
     margin-right: 30px;
     background-color: #98989b;
 }
-.user_infornation .img_container img {
+.img_container img {
     grid-column: 1/2;
     grid-row: 1/4;
     position: absolute;
@@ -23,13 +23,13 @@
     height: 100%;
     object-fit: cover;
 }
-.user_infornation .fullName {
+.fullname {
     grid-column: 2/3;
     grid-row: 1/2;
     display: flex;
     align-items: center;
 }
-.user_infornation .aboutMe {
+aboutme {
     grid-column: 2/3;
     grid-row: 2/3;
     display: flex;

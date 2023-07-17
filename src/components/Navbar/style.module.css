@@ -3,24 +3,24 @@
     grid-row: 2/3;
     background-color: #2a2929;
 }
-.menu .menu_list {
+.list {
     margin: 0;
     padding: 30px 15px;
 }
-.menu .menu__list>*:not(:last-child) {
+.list>*:not(:last-child) {
     padding-bottom: 15px;
 }
-.menu .menu__list .menu__item {
+.item {
     list-style: none;
     font-size: 18px;
 }
-.menu .menu__list .menu__item a {
+.item a {
     color: #98989b;
     text-decoration: none;
 }
-.menu .menu__list .menu__item a:hover {
+.item a:hover {
     color: #812c81;
 }
-.menu .menu__list .menu__item .menuActiveLink {
-    color: #ab44ab;
-}
+/*.menuActiveLink {*/
+/*    color: #ab44ab;*/
+/*}*/

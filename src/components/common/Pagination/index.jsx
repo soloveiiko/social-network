@@ -1,6 +1,6 @@
 import React from 'react'
-import './style.css'
 import { usePagination, DOTS } from '../../../hooks/usePagination'
+import styles from './style.module.css'
 
 const Index = ({
   totalUsersCount,
@@ -28,15 +28,15 @@ const Index = ({
   }
   let lastPage = paginationRange[paginationRange.length - 1]
   return (
-    <div className="pagination">
-      <ul className="pagination-container">
+    <div className={styles.pagination}>
+      <ul className={styles.container}>
         <button onClick={handlePrevClick} disabled={currentPage === 1}>
           prev
         </button>
         {paginationRange.map((p) => {
           if (p === DOTS) {
             return (
-              <li key={p} className="pagination-item dots">
+              <li key={p} className={styles.dots}>
                 &#8230;
               </li>
             )
@@ -46,7 +46,7 @@ const Index = ({
               key={p}
               id={p}
               onClick={() => paginate(p)}
-              className={currentPage === p ? 'selected-page' : ''}
+              className={currentPage === p ? 'selected_page' : ''}
             >
               {p}
             </li>

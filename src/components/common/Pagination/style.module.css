@@ -1,4 +1,4 @@
-.pagination-container {
+.container {
     display: flex;
     align-items: center;
     column-gap: 10px;
@@ -13,8 +13,8 @@
     cursor: pointer;
     color: white;
 }
-.pagination .selected-page {
-    background-color: #ab44ab;
-    color: black;
-    border-radius: 50px;
-}
+/*.pagination .selected-page {*/
+/*    background-color: #ab44ab;*/
+/*    color: black;*/
+/*    border-radius: 50px;*/
+/*}*/

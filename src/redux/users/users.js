@@ -59,9 +59,9 @@ export const setIsFetching = (isFetching) => ({
   type: SET_IS_FETCHING,
   isFetching: isFetching,
 })
-export const setCurrentPage = (currrentPage) => ({
+export const setCurrentPage = (currentPage) => ({
   type: SET_CURRENT_PAGE,
-  currrentPage,
+  currentPage,
 })
 
 export default users

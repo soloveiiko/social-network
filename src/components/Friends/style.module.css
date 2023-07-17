@@ -1,13 +1,13 @@
-.friends__container {
+.container {
     margin-top: 70px;
     padding: 0 10px;
 }
-.friends__title {
+.title {
     padding-left: 40px;
     color: #98989b;
     font-size: 26px;
 }
-.friends__list {
+.list {
     display: flex;
     column-gap: 10px;
 }

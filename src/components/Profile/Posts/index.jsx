@@ -1,5 +1,5 @@
 import React from 'react'
-import './style.css'
+import styles from './style.module.css'
 import Post from './Post'
 
 const Posts = (props) => {
@@ -20,8 +20,8 @@ const Posts = (props) => {
   }
 
   return (
-    <div className="posts_container">
-      <div className="new_posts">
+    <div className={styles.container}>
+      <div className={styles.send_container}>
         <textarea onChange={onPostChange} value={props.postValue}></textarea>
         <button onClick={onAddPost}>Send</button>
       </div>

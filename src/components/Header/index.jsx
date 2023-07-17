@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
+import axios from 'axios'
 import { NavLink } from 'react-router-dom'
 import ball from '../../assets/images/ball.png'
-import './style.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUserData } from '../../redux/auth/auth'
-import axios from 'axios'
+import styles from './style.module.css'
 
 const Header = () => {
   const auth = useSelector((state) => state.auth)
@@ -32,15 +32,15 @@ const Header = () => {
   }, [])
 
   return (
-    <header className="header">
-      <div className="header__container">
-        <img className="header__logo" src={ball} alt="logo" />
-        <h1 className="header__title_h1">Team</h1>
-        <div className="login-container">
+    <header className={styles.header}>
+      <div className={styles.container}>
+        <img className={styles.logo} src={ball} alt="logo" />
+        <h1 className={styles.title_h1}>Team</h1>
+        <div className={styles.login_container}>
           {auth.isAuth ? (
             auth.login
           ) : (
-            <NavLink className="login" to="/login">
+            <NavLink className={styles.login} to="/login">
               Login
             </NavLink>
           )}

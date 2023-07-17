@@ -4,22 +4,22 @@
     width: 100%;
     background-color: #1a1919;
 }
-.header__container {
+.container {
     display: flex;
     align-items: center;
     width: 1220px;
     margin: 0 auto;
 }
-.header__logo {
+.logo {
     width: 100px;
 }
-.header__title_h1 {
+.title_h1 {
     color: #98989b;
 }
-.header .login-container {
+.login_container {
     margin: 0 0 0 auto;
 }
-.header .login {
+.login {
     color: white;
     text-decoration: none;
     font-size: 20px;

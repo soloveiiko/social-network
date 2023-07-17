@@ -7,7 +7,7 @@ import { setUser } from '../../redux/profile/profile'
 import UserProfile from '../../components/Profile/UserProfile'
 import Posts from '../../components/Profile/Posts'
 import volleyball from '../../assets/images/volleyball-banner.jpeg'
-import './style.css'
+import styles from './style.module.css'
 
 const Index = () => {
   const user = useSelector((state) => state.profile)
@@ -37,11 +37,11 @@ const Index = () => {
   }
 
   return (
-    <div className="technologies">
-      <div className="banner">
+    <div className={styles.profile}>
+      <div className={styles.banner}>
         <img src={volleyball} alt="nature" />
       </div>
-      <div className="main_content">
+      <div className={styles.main_content}>
         <UserProfile profile={user.profile} />
         <Posts
           posts={posts.posts}

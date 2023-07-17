@@ -1,11 +1,11 @@
+import styles from './style.module.css'
 import React from 'react'
-import './style.css'
 
 const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="container">
-        <div className="title">
+    <footer className={styles.footer}>
+      <div className={styles.container}>
+        <div className={styles.title}>
           Created by <a href="https://github.com/soloveiiko">soloveiiko</a>
         </div>
       </div>

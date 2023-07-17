@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setIsFetching } from '../../redux/users/users'
 import User from '../../components/Users/User'
 import Index from '../../components/common/Pagination'
 import Preloader from '../../components/common/Preloader'
-import '../../components/Users/style.css'
+import styles from './style.module.css'
 
 const Users = () => {
   const [users, setUsers] = useState([])
@@ -38,12 +38,14 @@ const Users = () => {
     setUsers((prevUsers) =>
       prevUsers.map((u) => (u.id === userId ? { ...u, followed: false } : u))
     )
+    // dispatch(follow(userId))
   }
 
   const onClickUnfollow = (userId) => {
     setUsers((prevUsers) =>
       prevUsers.map((u) => (u.id === userId ? { ...u, followed: true } : u))
     )
+    // dispatch(unfollow(userId))
   }
 
   const paginate = (p) => {
@@ -56,7 +58,7 @@ const Users = () => {
   return (
     <>
       {usersPage.isFetching ? <Preloader /> : null}
-      <div className="users-container">
+      <div className={styles.container}>
         <User users={users} follow={onClickFollow} unfollow={onClickUnfollow} />
         <Index
           totalUsersCount={totalUsersCount}

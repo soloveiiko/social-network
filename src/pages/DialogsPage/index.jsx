@@ -6,7 +6,7 @@ import {
 } from '../../redux/dialogs/dialogs'
 import DialogItem from '../../components/Dialogs/DialogItem'
 import MessageItem from '../../components/Dialogs/MessageItem'
-import './style.css'
+import styles from './style.module.css'
 
 const Index = () => {
   const dialogs = useSelector((state) => state.dialogs)
@@ -21,31 +21,31 @@ const Index = () => {
   }
 
   return (
-    <div className="dialogs">
-      <div className="dialogs__contacts contacts">
+    <div className={styles.dialogs}>
+      <div className={styles.contacts}>
         {dialogs.dialogs.map((el) => (
           <DialogItem key={el.id} name={el.name} id={el.id} image={el.image} />
         ))}
       </div>
-      <div className="dialogs__messages messages">
-        <div className="messages__second-user">
+      <div className={styles.messages}>
+        <div className={styles.second_user}>
           {dialogs.messagesFirstUser.map((el) => (
             <MessageItem key={el.id} message={el.message} />
           ))}
         </div>
-        <div className="messages__first-user">
+        <div className={styles.first_user}>
           {dialogs.messagesSecondUser.map((el) => (
             <MessageItem key={el.id} message={el.message} />
           ))}
         </div>
       </div>
-      <div className="dialogs__new-message">
+      <div className={styles.new_message}>
         <textarea
-          className="dialogs__message-textarea"
+          className={styles.message_textarea}
           onChange={updateMessageInput}
           value={dialogs.messageValue}
         ></textarea>
-        <button className="dialogs__send-btn" onClick={sendMessage}>
+        <button className={styles.send_btn} onClick={sendMessage}>
           Send
         </button>
       </div>

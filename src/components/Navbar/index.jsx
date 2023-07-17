@@ -1,16 +1,16 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import './style.css'
 // import friends from "./friends";
+import styles from './style.module.css'
 
 const Navbar = () => {
   // const location = useLocation();
 
   // const isProfileActive = location.pathname.startsWith('/profile');
   return (
-    <nav className="menu">
-      <ul className="menu__list">
-        <li className="menu__item">
+    <nav className={styles.menu}>
+      <ul className={styles.list}>
+        <li className={styles.item}>
           {/*<NavLink*/}
           {/*  to='/profile/:id?'*/}
           {/*  isActive={isProfileActive}*/}
@@ -27,7 +27,7 @@ const Navbar = () => {
             Profile
           </NavLink>
         </li>
-        <li className="menu__item">
+        <li className={styles.item}>
           <NavLink
             to="/dialogs"
             className={(menuActiveLink) =>
@@ -37,7 +37,7 @@ const Navbar = () => {
             Dialogs
           </NavLink>
         </li>
-        <li className="menu__item">
+        <li className={styles.item}>
           <NavLink
             to="/users"
             className={(menuActiveLink) =>
@@ -49,7 +49,7 @@ const Navbar = () => {
         </li>
       </ul>
 
-      <div className="menu__friends-block friends">
+      <div className={styles.friends_block}>
         {/*<friends friends={props.state.dialogs}/>*/}
       </div>
     </nav>
