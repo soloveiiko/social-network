@@ -20,8 +20,9 @@ html {
     min-height: 100vh;
     overflow: hidden;
 }
-.team-network__content {
+.team-network .content {
     grid-column: 2/3;
     grid-row: 2/3;
     background-color: #2f2e2e;
+    padding-bottom: 30px;
 }

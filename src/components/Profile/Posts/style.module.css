@@ -1,5 +1,6 @@
-.container {
-    margin-top: 30px;
+.posts_container {
+    margin-top: 15px;
+    padding: 0 15px;
 }
 .send_container {
     display: flex;
@@ -25,7 +26,7 @@
     cursor: pointer;
     margin: auto 0 0 15px;
 }
-.container img {
+.posts_container img {
     width: 50px;
     height: 50px;
     border-radius: 50px;

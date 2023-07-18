@@ -16,7 +16,7 @@ const Posts = (props) => {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.posts_container}>
       <div className={styles.send_container}>
         <textarea onChange={onPostChange} value={props.postValue}></textarea>
         <button onClick={onAddPost}>Send</button>

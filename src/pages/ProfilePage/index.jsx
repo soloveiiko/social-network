@@ -6,7 +6,6 @@ import { setUser } from '../../redux/profile'
 import { getUser } from '../../api'
 import UserProfile from '../../components/Profile/UserProfile'
 import Posts from '../../components/Profile/Posts'
-import volleyball from '../../assets/images/volleyball-banner.jpeg'
 import styles from './style.module.css'
 
 const ProfilePage = () => {
@@ -35,18 +34,13 @@ const ProfilePage = () => {
   }
   return (
     <div className={styles.profile}>
-      <div className={styles.banner}>
-        <img src={volleyball} alt="nature" />
-      </div>
-      <div className={styles.main_content}>
-        <UserProfile profile={profile.profile} />
-        <Posts
-          posts={posts.posts}
-          postValue={posts.postValue}
-          addNewPost={addNewPost}
-          updateNewPostText={updateNewPostText}
-        />
-      </div>
+      <UserProfile profile={profile.profile} />
+      <Posts
+        posts={posts.posts}
+        postValue={posts.postValue}
+        addNewPost={addNewPost}
+        updateNewPostText={updateNewPostText}
+      />
     </div>
   )
 }
