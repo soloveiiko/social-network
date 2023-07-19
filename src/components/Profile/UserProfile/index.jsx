@@ -1,12 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Preloader from '../../common/Preloader'
 import userPhoto from '../../../assets/images/1.png'
 import styles from './style.module.css'
 import volleyball from '../../../assets/images/volleyball-banner.jpeg'
 const User = (props) => {
+  const [editMode, setEditMode] = useState(false)
+
+  const activateEditMode = () => {
+    setEditMode(true)
+  }
+  const deactivateEditMode = () => {
+    setEditMode(false)
+  }
+
   if (!props.profile) {
     return <Preloader />
   }
+  console.log(props.profile)
   return (
     <>
       <div className={styles.banner}>
@@ -31,7 +41,20 @@ const User = (props) => {
           />
         </div>
         <div className={styles.fullname}>{props.profile.fullName}</div>
-        <div className={styles.aboutme}>{props.profile.aboutMe}</div>
+        {editMode ? (
+          <input
+            value={props.profile.aboutMe}
+            autoFocus={true}
+            onBlur={() => deactivateEditMode()}
+          />
+        ) : (
+          <div
+            className={styles.aboutme}
+            onDoubleClick={() => activateEditMode()}
+          >
+            {props.profile.aboutMe}
+          </div>
+        )}
       </div>
     </>
   )

@@ -3,17 +3,35 @@ const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET-USERS'
 const SET_IS_FETCHING = 'SET-IS-FETCHING'
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE'
+const SET_FOLLOW_STATUS = 'SET-FOLLOW-STATUS'
 
 let initialState = {
   users: [],
   totalUsersCount: 1,
   pageSize: 5,
   isFetching: false,
+  follow: false,
 }
 
 const users = (state = initialState, action) => {
   switch (action.type) {
+    case SET_USERS:
+      return {
+        ...state,
+        users: [...action.users],
+      }
     case FOLLOW:
+      return {
+        ...state,
+        users: state.users.map((u) => {
+          if (u.id === action.userId) {
+            return { ...u, followed: true }
+          }
+          return u
+        }),
+        follow: true,
+      }
+    case UNFOLLOW:
       return {
         ...state,
         users: state.users.map((u) => {
@@ -22,20 +40,7 @@ const users = (state = initialState, action) => {
           }
           return u
         }),
-      }
-    case UNFOLLOW:
-      return {
-        users: state.users.map((u) => {
-          if (u.id === action.userId) {
-            return { ...u, followed: true }
-          }
-          return u
-        }),
-      }
-    case SET_USERS:
-      return {
-        ...state,
-        users: [...action.users],
+        follow: false,
       }
     case SET_CURRENT_PAGE:
       return {
@@ -46,6 +51,11 @@ const users = (state = initialState, action) => {
       return {
         ...state,
         isFetching: action.isFetching,
+      }
+    case SET_FOLLOW_STATUS:
+      return {
+        ...state,
+        follow: action.follow,
       }
     default:
       return state

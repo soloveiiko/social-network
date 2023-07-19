@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setIsFetching, setUsers } from '../../redux/users'
+import { follow, setIsFetching, setUsers, unfollow } from '../../redux/users'
 import { getUsers } from '../../api'
 import User from '../../components/Users/User'
 import Pagination from '../../components/common/Pagination'
@@ -13,6 +13,7 @@ const UsersPage = () => {
   const [pageSize] = useState(5)
 
   const usersPage = useSelector((state) => state.users)
+
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -20,29 +21,24 @@ const UsersPage = () => {
       dispatch(setIsFetching(true))
       try {
         const response = await getUsers(currentPage, pageSize)
-        dispatch(setUsers(response.items))
         setTotalUsersCount(response.totalCount)
         dispatch(setIsFetching(false))
+        dispatch(setUsers(response.items))
       } catch (error) {
         console.log(error)
       }
     }
-
     fetchUsers()
   }, [currentPage, pageSize])
 
   const onClickFollow = (userId) => {
-    setUsers((prevUsers) =>
-      prevUsers.map((u) => (u.id === userId ? { ...u, followed: false } : u))
-    )
-    // dispatch(follow(userId))
+    dispatch(follow(userId))
+    console.log(usersPage.users.find((u) => u.id === userId)?.followed)
   }
 
   const onClickUnfollow = (userId) => {
-    setUsers((prevUsers) =>
-      prevUsers.map((u) => (u.id === userId ? { ...u, followed: true } : u))
-    )
-    // dispatch(unfollow(userId))
+    dispatch(unfollow(userId))
+    console.log(usersPage.users.find((u) => u.id === userId)?.followed)
   }
 
   const paginate = (p) => {

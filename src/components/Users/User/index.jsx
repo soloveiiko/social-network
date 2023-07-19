@@ -12,16 +12,15 @@ const User = (props) => {
             <Link to={`/profile/${u.id}`}>
               <img
                 src={u.photos.small != null ? u.photos.small : userPhoto}
-                alt="logo"
+                alt="avatar"
               />
             </Link>
           </div>
-
           <div className={styles.btn_container}>
-            {u.followed ? (
-              <button onClick={() => props.follow(u.id)}>Follow</button>
+            {!u.followed ? (
+              <button onClick={() => props.follow(u.id)}>Unfollow</button>
             ) : (
-              <button onClick={() => props.unfollow(u.id)}>Unfollow</button>
+              <button onClick={() => props.unfollow(u.id)}>Follow</button>
             )}
           </div>
           <div className={styles.name}>{u.name}</div>

@@ -7,10 +7,13 @@ import {
 import DialogItem from '../../components/Dialogs/DialogItem'
 import MessageItem from '../../components/Dialogs/MessageItem'
 import styles from './style.module.css'
+import profile from '../../redux/profile'
 
 const DialogsPage = () => {
   const dialogs = useSelector((state) => state.dialogs)
+  const users = useSelector((state) => state.users)
   const dispatch = useDispatch()
+  console.log(users)
   const sendMessage = () => {
     dispatch(addMessageActionCreator())
   }

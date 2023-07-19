@@ -4,7 +4,7 @@ const initialState = {
   id: null,
   login: null,
   email: null,
-  isAuth: false,
+  isAuth: true,
 }
 
 const auth = (state = initialState, action) => {
