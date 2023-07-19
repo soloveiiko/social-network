@@ -5,7 +5,12 @@ import styles from './style.module.css'
 import volleyball from '../../../assets/images/volleyball-banner.jpeg'
 const User = (props) => {
   const [editMode, setEditMode] = useState(false)
+  const [aboutUs, setAboutUs] = useState()
 
+  const onChangeAboutUs = (e) => {
+    const text = e.target.value
+    setAboutUs(text)
+  }
   const activateEditMode = () => {
     setEditMode(true)
   }
@@ -43,8 +48,9 @@ const User = (props) => {
         <div className={styles.fullname}>{props.profile.fullName}</div>
         {editMode ? (
           <input
-            value={props.profile.aboutMe}
+            value={aboutUs}
             autoFocus={true}
+            onChange={onChangeAboutUs}
             onBlur={() => deactivateEditMode()}
           />
         ) : (

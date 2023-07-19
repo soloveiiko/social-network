@@ -7,30 +7,36 @@ const instance = axios.create({
     'API-KEY': '',
   },
 })
-export const getUsers = (currentPage = 1, pageSize = 10) => {
-  return instance
-    .get(`users?page=${currentPage}&count=${pageSize}`)
-    .then((response) => {
-      return response.data
-    })
+export const profileAPI = {
+  getProfile(userId) {
+    return instance.get(`profile/${userId}`)
+  },
+  getStatus(userId) {
+    return instance.get(`profile/status/` + userId)
+  },
+  updateStatus(status) {
+    return instance.get(`profile/status/`, { status: status })
+  },
 }
-export const getUser = (userId = 3) => {
-  return instance.get(`profile/${userId}`).then((response) => {
-    return response.data
-  })
+export const authAPI = {
+  me() {
+    return instance.get('/auth/me')
+  },
+  loginUser() {
+    return instance.post('/login')
+  },
+  deleteUser() {
+    return instance.delete('/login')
+  },
 }
-export const getAuth = () => {
-  return instance.get('/auth/me').then((response) => {
-    return response.data
-  })
-}
-export const getFollow = (userId) => {
-  return instance.post(`/follow/${userId}`).then((response) => {
-    return response.data
-  })
-}
-export const getUnfollow = (userId) => {
-  return instance.delete(`/follow/${userId}`).then((response) => {
-    return response.data
-  })
+export const usersAPI = {
+  getUsers(currentPage, pageSize) {
+    return instance.get(`users?page=${currentPage}&count=${pageSize}`)
+  },
+  getFollow(userId) {
+    instance.post(`/follow/${userId}`)
+  },
+  getUnfollow(userId) {
+    instance.delete(`/follow/${userId}`)
+  },
 }

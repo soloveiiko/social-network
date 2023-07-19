@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { addPost, updatePostText } from '../../redux/posts'
 import { setUser } from '../../redux/profile'
-import { getUser } from '../../api'
+import { profileAPI } from '../../api'
 import UserProfile from '../../components/Profile/UserProfile'
 import Posts from '../../components/Profile/Posts'
 import styles from './style.module.css'
@@ -18,7 +18,11 @@ const ProfilePage = () => {
     const fetchUser = async () => {
       try {
         let userId = id || 3
-        const response = await getUser(userId)
+        const response = await profileAPI
+          .getProfile(userId)
+          .then((response) => {
+            return response.data
+          })
         dispatch(setUser(response))
       } catch (error) {
         console.log(error)

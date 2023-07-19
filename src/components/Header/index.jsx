@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { setUserData } from '../../redux/auth'
-import { getAuth } from '../../api'
+import { authAPI } from '../../api'
 import ball from '../../assets/images/ball.png'
 import styles from './style.module.css'
 
@@ -13,8 +13,9 @@ const Header = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const responce = await getAuth()
-
+        const responce = await authAPI.me().then((response) => {
+          return response.data
+        })
         if (responce.data.resultCode === 0) {
           let { id, login, email } = responce.data.data
           dispatch(setUserData(id, login, email))

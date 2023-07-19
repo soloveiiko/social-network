@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { follow, setIsFetching, setUsers, unfollow } from '../../redux/users'
-import { getUsers } from '../../api'
+import { usersAPI } from '../../api'
 import User from '../../components/Users/User'
 import Pagination from '../../components/common/Pagination'
 import Preloader from '../../components/common/Preloader'
@@ -20,7 +20,11 @@ const UsersPage = () => {
     const fetchUsers = async () => {
       dispatch(setIsFetching(true))
       try {
-        const response = await getUsers(currentPage, pageSize)
+        const response = await usersAPI
+          .getUsers(currentPage, pageSize)
+          .then((response) => {
+            return response.data
+          })
         setTotalUsersCount(response.totalCount)
         dispatch(setIsFetching(false))
         dispatch(setUsers(response.items))
