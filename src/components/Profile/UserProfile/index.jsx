@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import Preloader from '../../common/Preloader'
 import userPhoto from '../../../assets/images/1.png'
 import styles from './style.module.css'
 import volleyball from '../../../assets/images/volleyball-banner.jpeg'
+import Preloader from '../../common/Preloader'
 const User = (props) => {
   const [editMode, setEditMode] = useState(false)
   const [aboutUs, setAboutUs] = useState()
@@ -21,7 +21,7 @@ const User = (props) => {
   if (!props.profile) {
     return <Preloader />
   }
-  console.log(props.profile)
+
   return (
     <>
       <div className={styles.banner}>

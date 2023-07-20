@@ -1,6 +1,7 @@
 import firstUser from '../../assets/images/1.png'
 import secondUser from '../../assets/images/2.png'
 import thirdUser from '../../assets/images/3.jpeg'
+import { ADD_MESSAGE_ERROR, ADD_MESSAGE_SUCCESS } from './action'
 
 const ADD_MESSAGE = 'ADD-MESSAGE'
 const UPDATE_MESSAGE_VALUE = 'UPDATE-MESSAGE-TEXT'
@@ -22,16 +23,24 @@ let initialState = {
     { id: 3, message: 'I`m good' },
   ],
   messageValue: '',
+  isLoading: false,
+  error: '',
 }
 
 const dialogs = (state = initialState, action) => {
-  switch (action.type) {
+  const { type, payload } = action
+  switch (type) {
     case UPDATE_MESSAGE_VALUE:
       return {
         ...state,
         messageValue: action.newText,
       }
     case ADD_MESSAGE:
+      return {
+        ...state,
+        isLoading: true,
+      }
+    case ADD_MESSAGE_SUCCESS:
       let newMessage = state.messageValue
       return {
         ...state,
@@ -40,13 +49,20 @@ const dialogs = (state = initialState, action) => {
           { id: 4, message: newMessage },
         ],
         messageValue: '',
+        isLoading: false,
+        error: '',
+      }
+    case ADD_MESSAGE_ERROR:
+      return {
+        ...state,
+        messageValue: '',
+        isLoading: false,
+        error: payload,
       }
     default:
       return state
   }
 }
-
-export const addMessageActionCreator = () => ({ type: ADD_MESSAGE })
 export const updateMessageActionCreator = (text) => ({
   type: UPDATE_MESSAGE_VALUE,
   newText: text,

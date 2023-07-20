@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { addPost, updatePostText } from '../../redux/posts'
-import { setUser } from '../../redux/profile'
+import { updatePostText } from '../../redux/posts/reducer'
+import { setUser } from '../../redux/profile/reducer'
 import { profileAPI } from '../../api'
 import UserProfile from '../../components/Profile/UserProfile'
 import Posts from '../../components/Profile/Posts'
 import styles from './style.module.css'
+import { addPostSuccess } from '../../redux/posts/action'
+import { getProfileAsync } from '../../redux/profile/action'
 
 const ProfilePage = () => {
   const profile = useSelector((state) => state.profile)
@@ -14,31 +16,30 @@ const ProfilePage = () => {
   const dispatch = useDispatch()
   const { id } = useParams()
 
+  let userId = id || 3
   useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        let userId = id || 3
-        const response = await profileAPI
-          .getProfile(userId)
-          .then((response) => {
-            return response.data
-          })
-        dispatch(setUser(response))
-      } catch (error) {
-        console.log(error)
-      }
+    try {
+      // const response = profileAPI.getProfile(userId).then((response) => {
+      //   return response.data
+      // })
+      // dispatch(setUser(response))
+      dispatch(getProfileAsync(userId))
+      console.log('test', profile)
+    } catch (error) {
+      console.log(error)
     }
-    fetchUser()
-  }, [id])
+  }, [dispatch])
   const addNewPost = () => {
-    dispatch(addPost())
+    dispatch(addPostSuccess())
   }
   const updateNewPostText = (text) => {
     dispatch(updatePostText(text))
   }
+
   return (
     <div className={styles.profile}>
-      <UserProfile profile={profile.profile} />
+      <UserProfile profile={profile.user} />
+      <button onClick={() => dispatch(getProfileAsync(userId))}>babah</button>
       <Posts
         posts={posts.posts}
         postValue={posts.postValue}
